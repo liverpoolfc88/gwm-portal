@@ -12,10 +12,10 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $page = $request->input('pagination')['page'];
-        $itemsPerPage = $request->input('pagination')['itemsPerPage'];
+//        $page = $request->input('pagination')['page'];
+//        $itemsPerPage = $request->input('pagination')['itemsPerPage'];
 
         $user = auth('api')->user();
         if ( $user->hasRole(['superadmin', 'admin']) ){

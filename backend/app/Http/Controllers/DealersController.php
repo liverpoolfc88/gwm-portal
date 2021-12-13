@@ -28,6 +28,22 @@ class DealersController extends Controller
         }
 
     }
+    public function deals()
+    {
+//        $page = $request->input('pagination')['page'];
+//        $itemsPerPage = $request->input('pagination')['itemsPerPage'];
+
+        $user = auth('api')->user();
+        if ( $user->hasRole(['superadmin', 'admin']) ){
+            return Dealer::latest()->get();
+//            ->paginate($itemsPerPage == '-1' ? 1000 : $itemsPerPage, ['*'], 'page name', $page);
+        }else{
+            return Dealer::latest()
+            ->where('id', '=', $user->dealer_id)->get();
+//            ->paginate($itemsPerPage == '-1' ? 1000 : $itemsPerPage, ['*'], 'page name', $page);
+        }
+
+    }
 
     /**
      * Show the form for creating a new resource.

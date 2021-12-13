@@ -619,9 +619,10 @@ export default {
 
     getDealer() {
       this.$axios
-          .post(this.$store.state.backend_url + "api/dealers")
+          .get(this.$store.state.backend_url + "api/deals")
           .then((resp) => {
             this.dealers = resp.data.data;
+            console.log(resp);
           })
           .catch(function (error) {
             console.log(error);

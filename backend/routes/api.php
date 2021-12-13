@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth:api']], function () {
 
     Route::post('/dealers','DealersController@index');
     Route::post('/dealers/update','DealersController@update');
+    Route::get('/deals','DealersController@deals');
     Route::delete('/dealers/delete/{id}', 'DealersController@destroy');
 
     Route::post('/realizevin','RealizedVinsController@index');
